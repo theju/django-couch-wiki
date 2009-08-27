@@ -6,7 +6,7 @@ INSTALL
 
 * Fetch the auth and sessions backends for couchdb from here_ and
   add them to the `INSTALLED_APPS` in your project's `settings.py` 
-  as per the instructions.
+  as per the instructions. Also requires `couchdb-python`_.
 * Place the `wiki` app and reference it too in the `INSTALLED_APPS`.
 * Append the `wiki/templates` directory (with the absolute path) in
   the `TEMPLATE_DIRS` attribute of the `settings.py`.
@@ -31,3 +31,4 @@ INSTALL
 Please let me know how you feel about this app.
 
 .. _here: http://github.com/theju/django-couchdb-utils/tree/master
+.. _`couchdb-python`: http://code.google.com/p/couchdb-python/
