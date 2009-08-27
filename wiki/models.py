@@ -1,6 +1,6 @@
 from couchdb.schema import *
 from couchdb.schema import View
-from couchwiki.auth.models import User
+from wiki.auth.models import User
 
 class Page(Document):
     created_date       = DateTimeField()
