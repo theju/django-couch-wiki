@@ -1,6 +1,5 @@
 from couchdb.schema import *
 from couchdb.schema import View
-from wiki.auth.models import User
 
 class Page(Document):
     created_date       = DateTimeField()
@@ -8,7 +7,7 @@ class Page(Document):
     title              = TextField()
     contents           = TextField()
     auth_user_editable = BooleanField()
-    user               = User()
+    user               = DictField()
 
     get_pages  = View('pages', 
                       'function (doc) { emit(doc.title, doc);}',
