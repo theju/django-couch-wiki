@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load markup %}
+
+{% block head %}
+<title>{{ page.title }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="span-18">
+  {% if create_page %}
+  <div class="preview">
+    {{ preview|restructuredtext }}
+  </div>
+    <form action="{% url page_submit page_name %}" method="POST">
+      <table>
+      {{ form.as_table }}
+      </table>
+      <p>
+	<input type="submit" name="submit"  value="Submit changes">
+	<input type="submit" name="preview" value="Preview changes">
+      </p>
+    </form>
+  {% endif %}
+  <h1>{{ page.title }}</h1>
+  <div class="content">
+    {{ page.contents|restructuredtext }}
+  </div>
+  {% ifequal create_page 0 %}
+  <div class="span-24 last">
+    <p>Page created on {{ page.created_date }} and last edited by {{ page.user.first_name }} {{ page.user.last_name }} on {{ page.last_edited_date }}</p>
+  </div>
+  {% endifequal %}
+</div>
+<div class="span-6 last">
+  <p>
+    {% if request.user.is_anonymous %}
+    <a href="/accounts/login/?next=/wiki/{{ page_name }}/">Login</a>
+    {% endif %}
+    <a href="{% url page_edit page_name %}">Edit Page</a>
+    {% if request.user.is_authenticated %}
+    <a href="/accounts/logout/?next=/wiki/{{ page_name }}/">Logout</a>
+    {% endif %}
+  </p>
+</div>
+{% endblock %}

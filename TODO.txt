@@ -1,0 +1,9 @@
+List of items to add that will utilize the power of couchdb
+and give this wiki something to boast about ;-). But I 
+promise this wiki will still be simple (fingers crossed).
+
+* Ability to diff between revisions
+* Add search support
+* Support signals
+
+and more as I can recollect them.
