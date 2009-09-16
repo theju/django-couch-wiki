@@ -27,7 +27,13 @@
   </div>
   {% ifequal create_page 0 %}
   <div class="span-24 last">
-    <p>Page created on {{ page.created_date }} and last edited by {{ page.user.first_name }} {{ page.user.last_name }} on {{ page.last_edited_date }}</p>
+    <p>Page created on {{ page.created_date }} and last edited by 
+      {% if page.user.get_full_name %}
+        {{ page.user.first_name }} {{ page.user.last_name }} 
+      {% else %}
+        Anonymous
+      {% endif %}
+      on {{ page.last_edited_date }}</p>
   </div>
   {% endifequal %}
 </div>
